@@ -5,6 +5,17 @@ function MusicRecommendations() {
     // initialize state to hold music recommendations
     const [ musicReco, setMusicReco ] = useState([]);
 
+    const [userInput, setUserInput] = useState('');
+
+    const handleChange = (event) => {
+        setUserInput(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(userInput)
+    }
+
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
 
