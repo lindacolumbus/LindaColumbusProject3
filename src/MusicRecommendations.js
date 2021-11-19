@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import MusicResults from './MusicResults'
 
-function MusicRecommendations() {
+function MusicRecommendations(props) {
     // initialize state to hold music recommendations
     const [ musicReco, setMusicReco ] = useState([]);
+    console.log(props.userSearch)
 
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
@@ -11,7 +12,7 @@ function MusicRecommendations() {
         const url = new URL('http://proxy.hackeryou.com');
         url.search = new URLSearchParams({
             reqUrl: proxiedUrl,
-            'params[q]': `glass-animals`,
+            'params[q]': props.userSearch,
             'params[type]': `music`,
             'params[info]': 1,
             'params[limit]': 3,
@@ -23,10 +24,10 @@ function MusicRecommendations() {
                 return response.json();
             })
             .then((jsonResponse) => {
-                console.log(jsonResponse.Similar.Results)
+                // console.log(jsonResponse.Similar.Results)
                 setMusicReco(jsonResponse.Similar.Results)
             })
-    }, [])
+    }, [props.userSearch])
 
     return (
         <section className="musicResults">

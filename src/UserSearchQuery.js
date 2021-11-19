@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import MusicRecommendations from './MusicRecommendations';
 
-function UserSearchQuery(props) {
+function UserSearchQuery() {
     // initialize state to hold user input
     const [ userInput, setUserInput ] = useState('');
+    const [ searchQuery, setSearchQuery ] = useState('');
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
@@ -11,8 +12,11 @@ function UserSearchQuery(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setSearchQuery(userInput);
         // console.log(userInput)
     }
+
+
 
     return (
         <section className="userSearch">
@@ -26,14 +30,10 @@ function UserSearchQuery(props) {
                     <button>Submit</button>
                 </form>
             </div>
-            <MusicRecommendations />
+            <MusicRecommendations 
+                userSearch={searchQuery}/>
         </section>
     )
 }
 
 export default UserSearchQuery;
-
-{/* <button onClick={() => {
-    props.getResults(userInput);
-    console.log(userInput)
-}}>Search</button> */}
