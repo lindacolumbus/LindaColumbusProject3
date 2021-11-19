@@ -2,6 +2,7 @@ import './Styles.css';
 // import { useEffect, useState } from 'react';
 import UserSearchQuery from './UserSearchQuery';
 import MusicRecommendations from './MusicRecommendations';
+import DisplayResults from './DisplayResults';
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
                 <h1>Taste Reco App</h1>
             </header>
             <main class="wrapper">
-                <UserSearchQuery />
+                <DisplayResults />
+                {/* <UserSearchQuery /> */}
                 {/* <MusicRecommendations /> */}
             </main>
         </div>

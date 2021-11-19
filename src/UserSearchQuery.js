@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MusicRecommendations from './MusicRecommendations';
 
-function UserSearchQuery() {
+function UserSearchQuery(props) {
     // initialize state to hold user input
     const [ userInput, setUserInput ] = useState('');
     const [ searchQuery, setSearchQuery ] = useState('');
@@ -10,11 +10,12 @@ function UserSearchQuery() {
         setUserInput(event.target.value);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setSearchQuery(userInput);
-        // console.log(userInput)
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     setSearchQuery(userInput);
+    //     console.log(userInput)
+        
+    // }
 
 
 
@@ -23,15 +24,13 @@ function UserSearchQuery() {
             <div className="instructions">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore animi alias, id pariatur, soluta omnis officia dolorem earum at illo eius non quas repellat aliquid nostrum molestiae laudantium? Earum, maxime!</p>
             </div>
-            <div className="searchForm">
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="userSearch">Name of musician or band</label>
-                    <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
-                    <button>Submit</button>
-                </form>
-            </div>
-            <MusicRecommendations 
-                userSearch={searchQuery}/>
+            <form onSubmit={(event) => props.searchValue(event, userInput)}>
+                <label htmlFor="userSearch">Name of musician or band</label>
+                <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
+                <button>Submit</button>
+            </form>
+            {/* <MusicRecommendations 
+                userSearch={searchQuery}/> */}
         </section>
     )
 }
