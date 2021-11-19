@@ -1,14 +1,20 @@
+import './Styles.css';
 import { useEffect, useState } from 'react';
+import UserSearchQuery from './UserSearchQuery';
 import MusicRecommendations from './MusicRecommendations';
 
 function App() {
-    // piece of state to hold API-retrieved recommendations
-    const [recommendation, setRecommendation] = useState([]);
 
     return (
-        <main>
-            <MusicRecommendations />
-        </main>
+        <div className="App">
+            <header>
+                <h1>Taste Reco App</h1>
+            </header>
+            <main class="wrapper">
+                <UserSearchQuery />
+                {/* <MusicRecommendations /> */}
+            </main>
+        </div>
     );
 }
 

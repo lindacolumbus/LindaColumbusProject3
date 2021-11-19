@@ -3,7 +3,7 @@ import MusicResults from './MusicResults'
 
 function MusicRecommendations() {
     // initialize state to hold music recommendations
-    const [musicReco, setMusicReco] = useState("");
+    const [ musicReco, setMusicReco ] = useState([]);
 
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
@@ -23,7 +23,6 @@ function MusicRecommendations() {
                 return response.json();
             })
             .then((jsonResponse) => {
-                // console.log(jsonResponse.Similar.Results);
                 console.log(jsonResponse.Similar.Results)
                 setMusicReco(jsonResponse.Similar.Results)
             })
@@ -39,24 +38,13 @@ function MusicRecommendations() {
                         <MusicResults
                             key={musician.yID}
                             name={musician.Name}
-                            blurb={musician.wTeaser}
+                            // blurb={musician.wTeaser}
                             infoLink={musician.wUrl}
                             videoLink={musician.yUrl}
-                        
                         />
                     )
                 })
             }
-
-
-
-
-
-            {/* <div className="resultsDetails">
-                <ul>
-                    <li>{musicReco}</li>
-                </ul>
-            </div> */}
         </section>
     )
 }
