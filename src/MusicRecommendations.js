@@ -26,9 +26,21 @@ function MusicRecommendations(props) {
                     return response.json();
                 })
                 .then((jsonResponse) => {
-                    setMusicReco(jsonResponse.Similar.Results)
+                    // Specific error handling since API always returns a successful call, even if it's an invalid parameter
+                    if (jsonResponse.Similar.Info[0].Type === 'music') {
+                        setMusicReco(jsonResponse.Similar.Results);
+                    } else if (jsonResponse.Similar.Info[0].Type === 'unknown') {
+                        throw new Error('invalid musician name')
+                    }
                 })
-        }
+                .catch((error) => {
+                    console.log(error.message)
+                    // Modal error display
+                    if (error.message) {
+                        alert('caught the error')
+                    }
+                })
+            }
     }, [props.searchedMusician])
 
     return (
