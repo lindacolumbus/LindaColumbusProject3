@@ -17,7 +17,7 @@ function MusicRecommendations(props) {
                 'params[q]': props.searchedMusician,
                 'params[type]': `music`,
                 'params[info]': 1,
-                'params[limit]': 3,
+                'params[limit]': 4,
                 'params[k]': `427150-musicfin-QVZ0ESID`
             });
 
@@ -33,7 +33,11 @@ function MusicRecommendations(props) {
 
     return (
         <section className="musicResults">
-            <p className="resultsHeading">Ok, so you like <span> {props.searchedMusician}</span>, but have you heard of...</p>
+            {/* Conditional operator, changing the on-screen message depending on whether or not the form has been submitted */}
+            {props.searchedMusician 
+            ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p> 
+            : <p>Waiting to hit play...</p>}
+
             {
                 musicReco.map(musician => {
                     // console.log(musician)

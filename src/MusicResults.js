@@ -1,15 +1,13 @@
 function MusicResults(props) {
     return (
-        <div>
+        <article>
             <h2>{props.name}</h2>
-            <article>
                 <ul>
                     {/* Render first two sentences returned from API description */}
-                    <li>{props.blurb.split('.', 3) + '...'} <a href="{props.infoLink}">Read more</a></li>
-                    <li>{props.videoLink}</li>
+                    <li>{props.blurb.split('.', 3) + '...'} <a href={props.infoLink}>Read more</a></li>
+                    {/* <li><iframe src={props.videoLink} frameBorder="0" title="Embedded YouTube Music Video"></iframe></li> */}
                 </ul>
-            </article>
-        </div>
+        </article>
     )
 }
 
