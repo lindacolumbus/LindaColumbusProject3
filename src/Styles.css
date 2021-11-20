@@ -86,6 +86,10 @@ button {
     text-transform: uppercase;
 }
 
+button.submit {
+    background-color: #fbc0bc;
+}
+
 /* Music results */
 
 .musicResults {

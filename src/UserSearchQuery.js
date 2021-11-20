@@ -14,10 +14,11 @@ function UserSearchQuery(props) {
                 <p>Are you still listening to that album you liked back in high school? Or that album that cool person at the party talked about?</p>
             </div>
             {/* Callback function to pass value to parent (DisplayResults) component */}
-            <form onSubmit={(event) => props.searchValue(event, userInput)}>
+            {/* Second function is clearing input field on submit  */}
+            <form onSubmit={(event) => { props.searchValue(event, userInput); setUserInput('') }}>
                 <label htmlFor="userSearch">Enter the name of a musician or band you love:</label>
                 <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
-                <button>Hit me baby one more time</button>
+                <button className="submit">Hit me baby one more time</button>
             </form>
         </section>
     )
