@@ -9,17 +9,16 @@ function DisplayResults() {
     const handleSubmit = (event, userInput) => {
         event.preventDefault();
         setSearchResult(userInput);
-        console.log(userInput)
-
     }
 
     return (
         <section className="results">
-            <UserSearchQuery 
-                searchValue={handleSubmit}/>
-            <MusicRecommendations 
+            {/* Pass down props to children components */}
+            <UserSearchQuery
+                searchValue={handleSubmit} />
+            <MusicRecommendations
                 searchedMusician={searchResult}
-                />
+            />
         </section>
     )
 }

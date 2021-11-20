@@ -1,36 +1,24 @@
 import { useState } from 'react';
-import MusicRecommendations from './MusicRecommendations';
 
 function UserSearchQuery(props) {
     // initialize state to hold user input
-    const [ userInput, setUserInput ] = useState('');
-    const [ searchQuery, setSearchQuery ] = useState('');
+    const [userInput, setUserInput] = useState('');
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
     }
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     setSearchQuery(userInput);
-    //     console.log(userInput)
-        
-    // }
-
-
-
     return (
         <section className="userSearch">
             <div className="instructions">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore animi alias, id pariatur, soluta omnis officia dolorem earum at illo eius non quas repellat aliquid nostrum molestiae laudantium? Earum, maxime!</p>
+                <p>Are you still listening to that album you liked back in high school? Or that album that cool person at the party talked about?</p>
             </div>
+            {/* Callback function to pass value to parent (DisplayResults) component */}
             <form onSubmit={(event) => props.searchValue(event, userInput)}>
-                <label htmlFor="userSearch">Name of musician or band</label>
+                <label htmlFor="userSearch">Enter the name of a musician or band you love:</label>
                 <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
-                <button>Submit</button>
+                <button>Hit me baby one more time</button>
             </form>
-            {/* <MusicRecommendations 
-                userSearch={searchQuery}/> */}
         </section>
     )
 }

@@ -69,3 +69,25 @@ li {
     grid-template-columns: 1.5fr 1fr;
     gap: 50px;
 }
+
+form {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+input {
+    height: 40px;
+    width: 100%;
+}
+
+button {
+    background-color: #BEE8E1;
+    border: none;
+    padding: 10px 40px;
+    text-transform: uppercase;
+}
+
+span {
+    text-transform: capitalize;
+    font-weight: 600;
+}

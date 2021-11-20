@@ -4,8 +4,8 @@ function MusicResults(props) {
             <h2>{props.name}</h2>
             <article>
                 <ul>
-                    {/* <li>{props.blurb.split(' ', 30) + '...'}</li> */}
-                    <li><a href={props.infoLink}>What they're all about</a></li>
+                    {/* Render first two sentences returned from API description */}
+                    <li>{props.blurb.split('.', 3) + '...'} <a href="{props.infoLink}">Read more</a></li>
                     <li>{props.videoLink}</li>
                 </ul>
             </article>
