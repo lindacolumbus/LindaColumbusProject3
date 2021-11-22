@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react';
-import MusicResults from './MusicResults'
+import MusicResults from './MusicResults';
 
 function MusicRecommendations(props) {
     // initialize state to hold music recommendations
     const [musicReco, setMusicReco] = useState([]);
+    // const [musicReco, setMusicReco] = useState([ [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}]]);
+    // const recommendations = [...musicReco];
+    // const slicedRecommendations = recommendations.slice(0, 4)
+    // const [currentPage, setCurrentPage] = useState(0)
+
+    // const handleClick = (event) => {
+    //     event.preventDefault();
+    // }
 
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
@@ -28,6 +36,7 @@ function MusicRecommendations(props) {
                 .then((jsonResponse) => {
                     // Specific error handling since API always returns a successful call, even if it's an invalid parameter
                     if (jsonResponse.Similar.Info[0].Type === 'music') {
+                        // console.log(jsonResponse.Similar.Results)
                         setMusicReco(jsonResponse.Similar.Results);
                     } else if (jsonResponse.Similar.Info[0].Type === 'unknown') {
                         throw new Error('invalid musician name')
@@ -65,6 +74,11 @@ function MusicRecommendations(props) {
                     )
                 })
             }
+
+            {/* <button onClick={handleClick}>Load more results</button> */}
+
+
+            {/* Create component for modal? Pass toggle state as props??? */}
         </section>
     )
 }

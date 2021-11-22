@@ -1,4 +1,4 @@
-function MusicResults(props) {
+function MoreMusicResults(props) {
     return (
         <article>
             <div>
@@ -12,4 +12,4 @@ function MusicResults(props) {
     )
 }
 
-export default MusicResults;
+export default MoreMusicResults;
