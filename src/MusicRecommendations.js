@@ -12,6 +12,17 @@ function MusicRecommendations(props) {
         setBatch(batch + 4)
     }
 
+    const [userInput, setUserInput] = useState('');
+
+    const handleChange = (event) => {
+        setUserInput(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(userInput)
+    }
+
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
 
