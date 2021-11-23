@@ -54,6 +54,10 @@ li {
     font-family: 'Padauk', sans-serif;
 }
 
+a {
+    color: #5e6c6a;
+}
+
 .wrapper {
     width: 70%;
     max-width: 1100px;
@@ -140,6 +144,16 @@ iframe {
 .loadMore {
     display: flex;
     justify-content: center;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #fbc0bc57;
+    padding: 20px 0;
+    margin-top: 50px;
 }
 
 /* Media Queries */

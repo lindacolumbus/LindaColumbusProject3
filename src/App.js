@@ -1,5 +1,6 @@
 import './Styles.css';
 import DisplayResults from './DisplayResults';
+import Footer from './Footer';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
             <main class="wrapper">
                 <DisplayResults />
             </main>
+            <Footer />
         </div>
     );
 }
