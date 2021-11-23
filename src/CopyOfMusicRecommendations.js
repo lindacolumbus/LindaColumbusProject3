@@ -25,7 +25,7 @@ function MusicRecommendations(props) {
                 'params[q]': props.searchedMusician,
                 'params[type]': `music`,
                 'params[info]': 1,
-                'params[limit]': 20,
+                'params[limit]': 4,
                 'params[k]': `427150-musicfin-QVZ0ESID`
             });
 
@@ -34,30 +34,6 @@ function MusicRecommendations(props) {
                     return response.json();
                 })
                 .then((jsonResponse) => {
-                    
-                    console.log(jsonResponse.Similar.Results);
-                    // store fetched API data (array of objects) in a variable
-                    const results = jsonResponse.Similar.Results;
-
-                    // Store API results in five batches containing four results             
-                    // const resultsBatch1 = jsonResponse.Similar.Results.slice(0, 4);
-                    // const resultsBatch2 = jsonResponse.Similar.Results.slice(4, 8);
-                    // const resultsBatch3 = jsonResponse.Similar.Results.slice(8, 12);
-                    // const resultsBatch4 = jsonResponse.Similar.Results.slice(12, 16);
-                    // const resultsBatch5 = jsonResponse.Similar.Results.slice(16, 20);
-                    
-
-                    // loop through the objects, adding a new "batch" increment property
-                    for (let i = 0; i < results.length; i++) {
-                        results[i].batch = i
-                    }
-
-                    // do I need to make a copy of the array with the new "batch" property?
-                    
-
-                    console.log(results)
-                    
-
                     // Specific error handling since API always returns a successful call, even if it's an invalid parameter
                     if (jsonResponse.Similar.Info[0].Type === 'music') {
                         // console.log(jsonResponse.Similar.Results)
@@ -65,7 +41,6 @@ function MusicRecommendations(props) {
                     } else if (jsonResponse.Similar.Info[0].Type === 'unknown') {
                         throw new Error('invalid musician name')
                     }
-
                 })
                 .catch((error) => {
                     console.log(error.message)
@@ -74,17 +49,17 @@ function MusicRecommendations(props) {
                         alert('caught the error')
                     }
                 })
-            }
+        }
     }, [props.searchedMusician])
 
     return (
         <section className="musicResults">
             {/* Conditional operator, changing the on-screen message depending on whether or not the form has been submitted */}
-            {props.searchedMusician 
-            ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p> 
-            : <p>Waiting to hit play...</p>}
+            {props.searchedMusician
+                ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p>
+                : <p>Waiting to hit play...</p>}
 
-            {/* {
+            {
                 musicReco.map(musician => {
                     // console.log(musician)
                     return (
@@ -98,7 +73,7 @@ function MusicRecommendations(props) {
                         />
                     )
                 })
-            } */}
+            }
 
             {/* <button onClick={handleClick}>Load more results</button> */}
 
