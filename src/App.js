@@ -6,10 +6,11 @@ function App() {
 
     return (
         <div className="App">
+            <a href="#mainContent" class="skipLink">Skip to main content</a>
             <header>
                 <h1>Taste Maker</h1>
             </header>
-            <main class="wrapper">
+            <main class="wrapper" id="mainContent">
                 <DisplayResults />
             </main>
             <Footer />

@@ -84,6 +84,12 @@ input {
     width: 100%;
 }
 
+/* To remove iOS rounded corner auto-styling of input field */
+input[type="text"] {
+    border: 1px solid #849996;
+    -webkit-appearance: none;
+}
+
 button {
     background-color: #BEE8E1;
     border: none;
@@ -171,6 +177,20 @@ footer {
     padding: 40px 0 5px 0;
 }
 
+/* Skip link */
+.skipLink {
+  position: absolute;
+  left: -1000px;
+  top: 5px;
+  z-index: 999;
+  background: white;
+  color: black;
+}
+
+.skipLink:focus {
+  left: 0;
+}
+
 /* Media Queries */
 
 @media (max-width: 1100px) {
@@ -195,6 +215,9 @@ footer {
     }
 
     @media (max-width: 768px) {
+        h1 {
+            padding-bottom: 50px;
+        }
         .userSearch {
             grid-template-columns: 1fr 1fr;
         }
