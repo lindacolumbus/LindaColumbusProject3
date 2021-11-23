@@ -62,7 +62,7 @@ function MusicRecommendations(props) {
     return (
         <>
             <section className="musicResults">
-                {/* conditional operator, changing the on-screen message depending on whether or not the form has been submitted */}
+                {/* conditional operator, changing the on-screen message depending on whether or not results have been rendered to the page */}
                 {musicReco.length >= 4
                 ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p> 
                 : <p>You spin me right round, baby, right round...</p>}

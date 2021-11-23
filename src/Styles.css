@@ -89,6 +89,7 @@ button {
     border: none;
     padding: 10px 40px;
     text-transform: uppercase;
+    color: black;
 }
 
 button.submit {
