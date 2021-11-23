@@ -4,6 +4,13 @@ import MusicResults from './MusicResults';
 function MusicRecommendations(props) {
     // initialize state to hold music recommendations
     const [musicReco, setMusicReco] = useState([]);
+    // state to hold number of API results rendered to the page
+    const [batch, setBatch] = useState(4);
+
+    // event handler, increase number of API results rendered to the page +4
+    const moreResults = () => {
+        setBatch(batch + 4)
+    }
 
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
@@ -17,36 +24,27 @@ function MusicRecommendations(props) {
                 'params[q]': props.searchedMusician,
                 'params[type]': `music`,
                 'params[info]': 1,
-                'params[limit]': 20,
+                'params[limit]': batch,
                 'params[k]': `427150-musicfin-QVZ0ESID`
             });
-
+        
             fetch(url)
                 .then((response) => {
                     return response.json();
                 })
                 .then((jsonResponse) => {
-                    // console.log(jsonResponse.Similar.Results);
                     // store fetched API data (array of objects) in a variable
                     const results = jsonResponse.Similar.Results;
-
-                    // loop through the objects, adding a new "batch" increment property
-                    for (let i = 0; i < results.length; i++) {
-                        results[i].batch = i
-                    }
-
-                    // do I need to make a copy of the array with the new "batch" property?
-                    
-                    console.log(results)
+                    // make a copy of the array to not mutate original fetched data
+                    const allData = [...results];
                     
                     // Specific error handling since API always returns a successful call, even if it's an invalid parameter
                     if (jsonResponse.Similar.Info[0].Type === 'music') {
-                        // console.log(jsonResponse.Similar.Results)
-                        setMusicReco(results);
+                        setMusicReco(allData);
+                        
                     } else if (jsonResponse.Similar.Info[0].Type === 'unknown') {
                         throw new Error('invalid musician name')
                     }
-
                 })
                 .catch((error) => {
                     // Modal error display
@@ -55,7 +53,8 @@ function MusicRecommendations(props) {
                     }
                 })
             }
-    }, [props.searchedMusician])
+    // re-renders the component on these two conditions: 1. if user adds a value to the search input; 2. if batch variable is updated
+    }, [props.searchedMusician, batch])
 
     return (
         <>
@@ -66,10 +65,7 @@ function MusicRecommendations(props) {
                 : <p>You spin me right round, baby, right round...</p>}
 
                 {
-                    musicReco.map(musician => {
-                        // console.log(musician)
-                        if (musician.batch < 4) {
-                            
+                    musicReco.map(musician => {                            
                         return (
                             // Pass retrieved API data as props to child component
                             <MusicResults
@@ -80,7 +76,7 @@ function MusicRecommendations(props) {
                                 videoLink={musician.yUrl}
                             />
                         )}
-                    })
+                    )
                 } 
 
                 {/* Create component for modal? Pass toggle state as props??? */}
@@ -89,7 +85,7 @@ function MusicRecommendations(props) {
             <div className="loadMore">
                 {/* Only show "load more results" button after first batch of four results are rendered */}
                 {props.searchedMusician
-                    ? <button>Gimme, gimme more</button>
+                    ? <button onClick={moreResults}>Gimme, gimme more</button>
                     : null}
             </div>
         </>
