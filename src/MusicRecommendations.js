@@ -4,14 +4,6 @@ import MusicResults from './MusicResults';
 function MusicRecommendations(props) {
     // initialize state to hold music recommendations
     const [musicReco, setMusicReco] = useState([]);
-    // const [musicReco, setMusicReco] = useState([ [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}]]);
-    // const recommendations = [...musicReco];
-    // const slicedRecommendations = recommendations.slice(0, 4)
-    // const [currentPage, setCurrentPage] = useState(0)
-
-    // const handleClick = (event) => {
-    //     event.preventDefault();
-    // }
 
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
@@ -34,18 +26,9 @@ function MusicRecommendations(props) {
                     return response.json();
                 })
                 .then((jsonResponse) => {
-                    
-                    console.log(jsonResponse.Similar.Results);
+                    // console.log(jsonResponse.Similar.Results);
                     // store fetched API data (array of objects) in a variable
                     const results = jsonResponse.Similar.Results;
-
-                    // Store API results in five batches containing four results             
-                    // const resultsBatch1 = jsonResponse.Similar.Results.slice(0, 4);
-                    // const resultsBatch2 = jsonResponse.Similar.Results.slice(4, 8);
-                    // const resultsBatch3 = jsonResponse.Similar.Results.slice(8, 12);
-                    // const resultsBatch4 = jsonResponse.Similar.Results.slice(12, 16);
-                    // const resultsBatch5 = jsonResponse.Similar.Results.slice(16, 20);
-                    
 
                     // loop through the objects, adding a new "batch" increment property
                     for (let i = 0; i < results.length; i++) {
@@ -54,21 +37,18 @@ function MusicRecommendations(props) {
 
                     // do I need to make a copy of the array with the new "batch" property?
                     
-
                     console.log(results)
                     
-
                     // Specific error handling since API always returns a successful call, even if it's an invalid parameter
                     if (jsonResponse.Similar.Info[0].Type === 'music') {
                         // console.log(jsonResponse.Similar.Results)
-                        setMusicReco(jsonResponse.Similar.Results);
+                        setMusicReco(results);
                     } else if (jsonResponse.Similar.Info[0].Type === 'unknown') {
                         throw new Error('invalid musician name')
                     }
 
                 })
                 .catch((error) => {
-                    console.log(error.message)
                     // Modal error display
                     if (error.message) {
                         alert('caught the error')
@@ -78,33 +58,41 @@ function MusicRecommendations(props) {
     }, [props.searchedMusician])
 
     return (
-        <section className="musicResults">
-            {/* Conditional operator, changing the on-screen message depending on whether or not the form has been submitted */}
-            {props.searchedMusician 
-            ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p> 
-            : <p>Waiting to hit play...</p>}
+        <>
+            <section className="musicResults">
+                {/* Conditional operator, changing the on-screen message depending on whether or not the form has been submitted */}
+                {props.searchedMusician 
+                ? <p className="resultsHeading">Ok, so you like <span>{props.searchedMusician}</span>, but have you heard of...</p> 
+                : <p>You spin me right round, baby, right round...</p>}
 
-            {/* {
-                musicReco.map(musician => {
-                    // console.log(musician)
-                    return (
-                        // Pass retrieved API data as props to child component
-                        <MusicResults
-                            key={musician.yID}
-                            name={musician.Name}
-                            blurb={musician.wTeaser}
-                            infoLink={musician.wUrl}
-                            videoLink={musician.yUrl}
-                        />
-                    )
-                })
-            } */}
+                {
+                    musicReco.map(musician => {
+                        // console.log(musician)
+                        if (musician.batch < 4) {
+                            
+                        return (
+                            // Pass retrieved API data as props to child component
+                            <MusicResults
+                                key={musician.yID}
+                                name={musician.Name}
+                                blurb={musician.wTeaser}
+                                infoLink={musician.wUrl}
+                                videoLink={musician.yUrl}
+                            />
+                        )}
+                    })
+                } 
 
-            {/* <button onClick={handleClick}>Load more results</button> */}
+                {/* Create component for modal? Pass toggle state as props??? */}
 
-
-            {/* Create component for modal? Pass toggle state as props??? */}
-        </section>
+            </section>
+            <div className="loadMore">
+                {/* Only show "load more results" button after first batch of four results are rendered */}
+                {props.searchedMusician
+                    ? <button>Gimme, gimme more</button>
+                    : null}
+            </div>
+        </>
     )
 }
 

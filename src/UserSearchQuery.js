@@ -18,7 +18,7 @@ function UserSearchQuery(props) {
             <form onSubmit={(event) => { props.searchValue(event, userInput); setUserInput('') }}>
                 <label htmlFor="userSearch">Enter the name of a musician or band you love:</label>
                 <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
-                <button className="submit">Hit me baby one more time</button>
+                <button className="submit">Here we are now, entertain us</button>
             </form>
         </section>
     )
