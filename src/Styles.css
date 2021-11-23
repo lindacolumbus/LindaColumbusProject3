@@ -62,6 +62,7 @@ a {
     width: 70%;
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
 }
 
 /* User search form */
@@ -107,6 +108,8 @@ button.submit {
 article {
     display: grid;
     grid-template-rows: 1fr 1.25fr;
+    border: 5px dashed #fbc0bc;
+    padding: 30px;
 }
 
 p.resultsHeading {
@@ -124,11 +127,6 @@ h2 {
 span {
     text-transform: capitalize;
     font-weight: 600;
-}
-
-article {
-    border: 5px dashed #fbc0bc;
-    padding: 30px;
 }
 
 li {
@@ -154,6 +152,22 @@ footer {
     background-color: #fbc0bc57;
     padding: 20px 0;
     margin-top: 50px;
+}
+
+/* Error modal */
+.modal {
+    position: absolute;
+    background-color: #BEE8E1;
+    height: 60%;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    padding: 5%;
+}
+
+.modal button {
+    border-bottom: 2px solid #fbc0bc;
+    padding: 40px 0 5px 0;
 }
 
 /* Media Queries */
