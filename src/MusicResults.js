@@ -6,7 +6,7 @@ function MusicResults(props) {
                 <p>{props.blurb.split(' ', 50).join(' ') + '...'} <a href={props.infoLink}>Read more</a></p>
             </div>
             <div>
-                <iframe src={props.videoLink} frameBorder="0" title="Embedded YouTube Music Video" allowFullscreen="true"></iframe>
+                <iframe src={props.videoLink} frameBorder="0" title="Embedded YouTube Music Video"></iframe>
             </div>
         </article>
     )

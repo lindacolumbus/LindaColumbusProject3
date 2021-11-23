@@ -12,24 +12,13 @@ function MusicRecommendations(props) {
         setBatch(batch + 4)
     }
 
-    const [userInput, setUserInput] = useState('');
-
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(userInput)
-    }
-
     useEffect(() => {
         const proxiedUrl = 'https://tastedive.com/api/similar';
 
         // Only return once if user passes a value and submits the form
         if (props.searchedMusician) {
 
-            const url = new URL('http://proxy.hackeryou.com');
+            const url = new URL('https://proxy.hackeryou.com');
             url.search = new URLSearchParams({
                 reqUrl: proxiedUrl,
                 'params[q]': props.searchedMusician,
