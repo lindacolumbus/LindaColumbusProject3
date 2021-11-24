@@ -1,4 +1,5 @@
 import './Styles.css';
+import Header from './Header';
 import DisplayResults from './DisplayResults';
 import Footer from './Footer';
 
@@ -7,9 +8,7 @@ function App() {
     return (
         <div className="App">
             <a href="#mainContent" class="skipLink">Skip to main content</a>
-            <header>
-                <h1>Taste Maker</h1>
-            </header>
+            <Header />
             <main class="wrapper" id="mainContent">
                 <DisplayResults />
             </main>

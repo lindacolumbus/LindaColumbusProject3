@@ -11,7 +11,7 @@ function UserSearchQuery(props) {
     return (
         <section className="userSearch">
             <div className="instructions">
-                <p>Are you still listening to that album you liked back in high school? Or that album that cool person at the party talked about?</p>
+                <p>Are you still listening to that album you liked back in high school? Only have 10 songs that are stuck on repeat? It's time to find some new music for your playlist! </p>
             </div>
             {/* Callback function to pass value to parent (DisplayResults) component */}
             {/* Second function is clearing input field on submit  */}
