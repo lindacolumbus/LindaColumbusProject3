@@ -6,31 +6,63 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+/* General baseline styling */
+
 html {
     font-size: 62.5%;
 }
 
-body, h1, h2, h3, h4, p, nav, ul, li, button {
+body, 
+h1, 
+h2, 
+h3, 
+h4, 
+p, 
+nav, 
+ul, 
+li, 
+button {
     margin: 0;
     padding: 0;
 }
 
-img {
-    max-width: 100%;
-    display: block;
+/* Display layouts */
+
+.userSearch,
+form,
+.musicResults,
+article {
+    display: grid;
 }
 
-/* Header */
+header,
+.loadMore,
+footer,
+.modal {
+    display: flex;
+    justify-content: center;
+}
+
+/* Positioning */
+
+.wrapper,
+.modal button {
+    position: relative;
+}
+
+.modal,
+.modal button:after,
+.skipLink {
+    position: absolute;
+}
 
 header {
     background-image: url(https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80);
     background-size: cover;
     height: 70vh;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding-bottom: 15%;
+    align-items: center;
 }
 
 h1 {
@@ -38,10 +70,7 @@ h1 {
     font-size: 9rem;
     font-weight: 600;
     text-align: center;
-    align-items: center;
 }
-
-/* Main content */
 
 label,
 p,
@@ -62,20 +91,15 @@ a {
     width: 70%;
     max-width: 1100px;
     margin: 0 auto;
-    position: relative;
 }
-
-/* User search form */
 
 .userSearch {
     padding: 50px 0;
-    display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 50px;
 }
 
 form {
-    display: grid;
     grid-template-rows: repeat(3, 1fr);
 }
 
@@ -102,10 +126,7 @@ button.submit {
     background-color: #fbc0bc;
 }
 
-/* Music results */
-
 .musicResults {
-    display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -113,7 +134,6 @@ button.submit {
 }
 
 article {
-    display: grid;
     grid-template-rows: 1fr 1.25fr;
     border: 5px dashed #fbc0bc;
     padding: 30px;
@@ -146,16 +166,7 @@ iframe {
     height: 300px;
 }
 
-.loadMore {
-    display: flex;
-    justify-content: center;
-}
-
-/* Footer */
-
 footer {
-    display: flex;
-    justify-content: center;
     background-color: #fbc0bc57;
     padding: 20px 0;
     margin-top: 50px;
@@ -163,23 +174,31 @@ footer {
 
 /* Error modal */
 .modal {
-    position: absolute;
     background-color: #BEE8E1;
     height: 60%;
     width: 50%;
     top: 10%;
     left: 25%;
     padding: 5%;
+    flex-direction: column;
 }
 
 .modal button {
-    border-bottom: 2px solid #fbc0bc;
     padding: 40px 0 5px 0;
+    text-align: left;
+}
+
+.modal button:after {
+    content: "";
+    left: 0;
+    bottom: 0;
+    background-color: #fbc0bc;
+    height: 2px;
+    width: 50px;
 }
 
 /* Skip link */
 .skipLink {
-  position: absolute;
   left: -1000px;
   top: 5px;
   z-index: 999;
@@ -203,9 +222,6 @@ footer {
     .musicResults,
     article {
         display: block;
-    }
-
-    article {
         margin-bottom: 50px;
     }
 
@@ -214,10 +230,17 @@ footer {
         margin-bottom: 20px;
     }
 
+    .modal {
+        width: 65%;
+        height: 60%;
+        left: 20%;
+    }
+
     @media (max-width: 768px) {
         h1 {
             padding-bottom: 50px;
         }
+        
         .userSearch {
             grid-template-columns: 1fr 1fr;
         }
@@ -234,6 +257,11 @@ footer {
 
         form {
             margin-top: 50px;
+        }
+
+        .modal {
+            width: 80%;
+            left: 10%;
         }
     }
 
