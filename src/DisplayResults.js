@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserSearchQuery from './UserSearchQuery';
 import MusicRecommendations from './MusicRecommendations';
+import SearchHistory from './SearchHistory';
 
 function DisplayResults() {
 
@@ -17,8 +18,9 @@ function DisplayResults() {
             <UserSearchQuery
                 searchValue={handleSubmit} />
             <MusicRecommendations
-                searchedMusician={searchResult}
-            />
+                searchedMusician={searchResult} />
+            <SearchHistory
+                searchedMusician={searchResult} />
         </section>
     )
 }

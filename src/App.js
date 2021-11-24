@@ -2,6 +2,7 @@ import './Styles.css';
 import Header from './Header';
 import DisplayResults from './DisplayResults';
 import Footer from './Footer';
+// import SearchHistory from './SearchHistory';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
             <Header />
             <main class="wrapper" id="mainContent">
                 <DisplayResults />
+                {/* <SearchHistory /> */}
             </main>
             <Footer />
         </div>

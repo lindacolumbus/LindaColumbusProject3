@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import firebase from './firebase';
 
 function UserSearchQuery(props) {
     // initialize state to hold user input
@@ -6,6 +7,12 @@ function UserSearchQuery(props) {
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
+    }
+
+    // push user search entry into Firebase
+    const handleClick = (event) => {
+        const dbRef = firebase.database().ref();
+        dbRef.push(userInput);
     }
 
     return (
@@ -18,7 +25,7 @@ function UserSearchQuery(props) {
             <form onSubmit={(event) => { props.searchValue(event, userInput); setUserInput('') }}>
                 <label htmlFor="userSearch">Enter the name of a musician or band you love:</label>
                 <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
-                <button className="submit">Here we are now, entertain us</button>
+                <button className="submit" onClick={handleClick}>Here we are now, entertain us</button>
             </form>
         </section>
     )

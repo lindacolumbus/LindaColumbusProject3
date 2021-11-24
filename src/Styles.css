@@ -38,9 +38,13 @@ article {
 header,
 .loadMore,
 footer,
-.modal {
+.modal{
     display: flex;
     justify-content: center;
+}
+
+.searchHistory ul {
+    display: flex;
 }
 
 /* Positioning */
@@ -108,22 +112,12 @@ input {
     width: 100%;
 }
 
-/* To remove iOS rounded corner auto-styling of input field */
-input[type="text"] {
-    border: 1px solid #849996;
-    -webkit-appearance: none;
-}
-
 button {
-    background-color: #BEE8E1;
+    background-color: #fbc0bc;
     border: none;
     padding: 10px 40px;
     text-transform: uppercase;
     color: black;
-}
-
-button.submit {
-    background-color: #fbc0bc;
 }
 
 .musicResults {
@@ -164,6 +158,29 @@ li {
 iframe {
     width: 100%;
     height: 300px;
+}
+
+.results p:nth-child(4) {
+    margin: 50px 0 25px 0;
+}
+
+.loadMore button {
+    background-color: #BEE8E1;
+}
+
+.searchHistory {
+    margin-top: 50px;
+    border: 5px dashed #BEE8E1;
+    padding: 30px;
+}
+
+.searchHistory li {
+    text-transform: capitalize;
+    padding-top: 20px;
+}
+
+.searchHistory button {
+    margin-top: 20px;
 }
 
 footer {
@@ -209,6 +226,7 @@ footer {
 .skipLink:focus {
   left: 0;
 }
+
 
 /* Media Queries */
 
