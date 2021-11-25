@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import firebase from './firebase';
+import firebase from '../firebase';
 
 function UserSearchQuery(props) {
     // initialize state to hold user input

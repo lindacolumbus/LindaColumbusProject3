@@ -6,9 +6,8 @@ function MusicRecommendations(props) {
     const [musicReco, setMusicReco] = useState([]);
     // state to hold number of API results rendered to the page
     const [batch, setBatch] = useState(4);
-
     // function for whether or not error message modal is visible or not
-    let [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
 
     // event handler, increase number of API results rendered to the page +4
     const moreResults = () => {
@@ -36,12 +35,11 @@ function MusicRecommendations(props) {
                     return response.json();
                 })
                 .then((jsonResponse) => {
-                    // store fetched API data (array of objects) in a variable
                     const results = jsonResponse.Similar.Results;
                     // make a copy of the array to not mutate original fetched data
                     const allData = [...results];
                     
-                    // specific error handling since API always returns a successful call, even if it's an invalid parameter
+                    // specific error handling since API always returns a successful call, even if it's an invalid search query
                     if (jsonResponse.Similar.Info[0].Type === 'music') {
                         setMusicReco(allData);
                         
@@ -56,7 +54,7 @@ function MusicRecommendations(props) {
                     }
                 })
             }
-    // re-renders the component on these two conditions: 1. if user adds a value to the search input; 2. if batch variable is updated
+    // re-renders the component on these two conditions: 1. if user passes a value to the search input; 2. if batch variable is updated
     }, [props.searchedMusician, batch])
 
     return (

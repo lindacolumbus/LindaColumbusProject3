@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
-import firebase from './firebase'
+import firebase from '../firebase'
 
 // Firebase stores user's search history
 function SearchHistory(props) {
     const [musicianHistory, setMusicianHistory] = useState([]);
-    let [clearHistoryButton, setClearHistoryButton] = useState(`Shh, that's a secret`)
+    const [clearHistoryButton] = useState(`Shh, that's a secret`)
+    const [isSearchHistoryVisible, setIsSearchHistoryVisible] = useState('searchHistory')
 
-    // Clears entire Firebase search history and changes button text based on event
+    // Clears entire Firebase search history and changes section visibility to hidden
     const onDelete = () => {
         const dbRef = firebase.database().ref();
         dbRef.remove();
-        setClearHistoryButton(`What music library?`)
+        setIsSearchHistoryVisible('hidden')
     }
 
     useEffect(() => {
@@ -31,7 +32,7 @@ function SearchHistory(props) {
         {props.searchedMusician
         ?
         <>
-            <section className="searchHistory">
+            <section className={isSearchHistoryVisible}>
             <p>There will always be a special place in your music library for:</p>
                 <ul>
                 {/* adding index parameter to determine whether or not a comma should be added to the list items (not for last child) */}

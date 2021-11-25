@@ -4,7 +4,6 @@ import MusicRecommendations from './MusicRecommendations';
 import SearchHistory from './SearchHistory';
 
 function DisplayResults() {
-
     const [searchResult, setSearchResult] = useState('');
 
     const handleSubmit = (event, userInput) => {
