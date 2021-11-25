@@ -33,7 +33,7 @@ function SearchHistory(props) {
         ?
         <>
             <section className={isSearchHistoryVisible}>
-            <p>There will always be a special place in your music library for:</p>
+            <p>Even if you find new music you like, we know there will always be a special place in your heart for:</p>
                 <ul>
                 {/* adding index parameter to determine whether or not a comma should be added to the list items (not for last child) */}
                 {musicianHistory.map((musician, index) => {

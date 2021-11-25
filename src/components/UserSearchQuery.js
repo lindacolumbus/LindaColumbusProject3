@@ -23,7 +23,7 @@ function UserSearchQuery(props) {
             {/* Callback function to pass value to parent (DisplayResults) component */}
             {/* Second function is clearing input field on submit  */}
             <form onSubmit={(event) => { props.searchValue(event, userInput); setUserInput('') }}>
-                <label htmlFor="userSearch">Enter the name of a musician or band you love:</label>
+                <label htmlFor="userSearch">Enter the name of a musician you love and we'll make some recommendations based on your taste:</label>
                 <input id="userSearch" type="text" placeholder="Search" value={userInput} onChange={handleChange} />
                 <button className="submit" onClick={handleClick}>Here we are now, entertain us</button>
             </form>
