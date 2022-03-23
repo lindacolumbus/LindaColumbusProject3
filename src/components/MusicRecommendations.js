@@ -19,7 +19,7 @@ function MusicRecommendations(props) {
 
     // only return once if user passes a value and submits the form
     if (props.searchedMusician) {
-      const url = new URL("http://gobetween.oklabs.org/");
+      const url = new URL("http://proxy.hackeryou.com");
       url.search = new URLSearchParams({
         reqUrl: proxiedUrl,
         "params[q]": props.searchedMusician,
