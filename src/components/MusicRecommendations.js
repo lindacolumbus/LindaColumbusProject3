@@ -19,7 +19,9 @@ function MusicRecommendations(props) {
 
     // only return once if user passes a value and submits the form
     if (props.searchedMusician) {
-      const url = new URL("https://proxy.hackeryou.com");
+      const url = new URL(
+        "https://thingproxy.freeboard.io/fetch/https://tastedive.com/api/similar"
+      );
       url.search = new URLSearchParams({
         reqUrl: proxiedUrl,
         "params[q]": props.searchedMusician,
